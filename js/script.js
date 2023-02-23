@@ -11,14 +11,18 @@ $(function () {
 
     // 試行回数
     trials++;
-    $('.trials').html(trial);
+    $('.trials').html(trials);
+    //Uncaught ReferenceError: trial is not defined
+     //at HTMLInputElement.<anonymous> (script.js:14:23)
+    //$('.trials').html(trial);→$('.trials').html(trials);に変更
 
     const VAL_NUMBER = $(this).val();
     let val = Number(VAL_NUMBER) || 0; // NaNのとき0にする
     const RESULT = Math.abs(val - ran); //数字がどのぐらい離れているか
 
     //判定処理
-    if (val > 0 || val < 9) {
+    if (val < 0 || val > 9) {
+      // if (val > 0 || val < 9) {
       $('.result-text').html("範囲内で入力してね！");
     } else if (RESULT == 0) {
       $('.result-text').html("正解!");
